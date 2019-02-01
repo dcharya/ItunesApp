@@ -1,0 +1,166 @@
+{
+  "success": true,
+  "total": 600,
+  "songList": [
+    {
+      "album": {
+        "id": 38742748,
+        "name": "Pure Eastern Indian Moods",
+        "cover": "https://p1.music.126.net/O641WjMMUDR4lQhoGldHcw==/109951163294472129.jpg?param=250y250",
+        "coverBig": "https://p1.music.126.net/O641WjMMUDR4lQhoGldHcw==/109951163294472129.jpg?param=400y400",
+        "coverSmall": "https://p1.music.126.net/O641WjMMUDR4lQhoGldHcw==/109951163294472129.jpg?param=140y140"
+      },
+      "artists": [
+        {
+          "id": 14291510,
+          "name": "The World Music Ensemble",
+          "tns": [],
+          "alias": []
+        }
+      ],
+      "name": "Sonu",
+      "id": 560091452,
+      "needPay": true
+    },
+    {
+      "album": {
+        "id": 35713188,
+        "name": "Nabi Ki Aamad",
+        "cover": "https://p1.music.126.net/JqwTufVqf6jIHE3I8EQYrw==/18347550533444395.jpg?param=250y250",
+        "coverBig": "https://p1.music.126.net/JqwTufVqf6jIHE3I8EQYrw==/18347550533444395.jpg?param=400y400",
+        "coverSmall": "https://p1.music.126.net/JqwTufVqf6jIHE3I8EQYrw==/18347550533444395.jpg?param=140y140"
+      },
+      "artists": [
+        {
+          "id": 399619,
+          "name": "Sonu",
+          "tns": [],
+          "alias": []
+        },
+        {
+          "id": 12935212,
+          "name": "Sonu",
+          "tns": [],
+          "alias": []
+        }
+      ],
+      "name": "Hame To Mast Kiya Kali",
+      "id": 488772671,
+      "needPay": true
+    },
+    {
+      "album": {
+        "id": 2884081,
+        "name": "Kabhi Khushi Kabhie Gham (Original Motion Picture Soundtrack)",
+        "cover": "https://p1.music.126.net/jzl1Q9RZv7jx0EXChRp3iw==/109951163459710216.jpg?param=250y250",
+        "coverBig": "https://p1.music.126.net/jzl1Q9RZv7jx0EXChRp3iw==/109951163459710216.jpg?param=400y400",
+        "coverSmall": "https://p1.music.126.net/jzl1Q9RZv7jx0EXChRp3iw==/109951163459710216.jpg?param=140y140"
+      },
+      "artists": [
+        {
+          "id": 106801,
+          "name": "Jatin-Lalit",
+          "tns": [],
+          "alias": []
+        },
+        {
+          "id": 106399,
+          "name": "Alka Yagnik",
+          "tns": [],
+          "alias": []
+        },
+        {
+          "id": 151479,
+          "name": "Amit Kumar",
+          "tns": [],
+          "alias": []
+        },
+        {
+          "id": 83474,
+          "name": "Udit Narayan",
+          "tns": [],
+          "alias": []
+        },
+        {
+          "id": 106315,
+          "name": "Sonu Nigam",
+          "tns": [],
+          "alias": []
+        },
+        {
+          "id": 0,
+          "name": "Kavita K.Subramaniam",
+          "tns": [],
+          "alias": []
+        }
+      ],
+      "name": "Bole Chudiyan",
+      "id": 28726507,
+      "needPay": true
+    },
+    {
+      "album": {
+        "id": 36884832,
+        "name": "3 Aces of Bollywood (NotExplicit)",
+        "cover": "https://p1.music.126.net/R8YOemDdauAWqYucYimMEA==/18272783742580007.jpg?param=250y250",
+        "coverBig": "https://p1.music.126.net/R8YOemDdauAWqYucYimMEA==/18272783742580007.jpg?param=400y400",
+        "coverSmall": "https://p1.music.126.net/R8YOemDdauAWqYucYimMEA==/18272783742580007.jpg?param=140y140"
+      },
+      "artists": [
+        {
+          "id": 106315,
+          "name": "Sonu Nigam",
+          "tns": [],
+          "alias": []
+        },
+        {
+          "id": 0,
+          "name": "Sameer",
+          "tns": [],
+          "alias": []
+        },
+        {
+          "id": 956243,
+          "name": "Pritam",
+          "tns": [],
+          "alias": []
+        },
+        {
+          "id": 196556,
+          "name": "D.R",
+          "tns": [],
+          "alias": []
+        }
+      ],
+      "name": "Ada (From \"Garam Masala\")",
+      "id": 522074112,
+      "needPay": true
+    },
+    {
+      "album": {
+        "id": 36557274,
+        "name": "Baghwo Chalela Jhaar K",
+        "cover": "https://p1.music.126.net/uxIsuALDdYcdm_1CKswIrA==/18344251998303159.jpg?param=250y250",
+        "coverBig": "https://p1.music.126.net/uxIsuALDdYcdm_1CKswIrA==/18344251998303159.jpg?param=400y400",
+        "coverSmall": "https://p1.music.126.net/uxIsuALDdYcdm_1CKswIrA==/18344251998303159.jpg?param=140y140"
+      },
+      "artists": [
+        {
+          "id": 0,
+          "name": "Sonu, Monu",
+          "tns": [],
+          "alias": []
+        },
+        {
+          "id": 13774084,
+          "name": "Sonu",
+          "tns": [],
+          "alias": []
+        }
+      ],
+      "name": "Lal Chunariya Mai",
+      "id": 512847667,
+      "needPay": true
+    }
+  ]
+}
