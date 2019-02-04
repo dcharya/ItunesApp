@@ -7,6 +7,7 @@ import com.example.rssfeeder.utils.JsonProvider
 import com.example.rssfeeder.utils.RxImmediateSchedulerRule
 import com.google.gson.Gson
 import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.plugins.RxAndroidPlugins
 import io.reactivex.schedulers.Schedulers
 import org.junit.Before
@@ -48,7 +49,7 @@ class HomeViewModelTest {
 
         val songList = gson.fromJson<SongList>(JsonProvider.getJson(ARTIST_DATA_SONU), SongList::class.java)
 
-        Mockito.`when`(iTunesService.getTracks(artist)).thenReturn(Observable.just(Response.success(songList)))
+        Mockito.`when`(iTunesService.getTracks(artist)).thenReturn(Single.just(Response.success(songList)))
         homeViewModel.songListData.observeForever(observer)
         homeViewModel.getSongList(artist)
         print(homeViewModel.songListData)

@@ -5,16 +5,7 @@ import androidx.lifecycle.MutableLiveData
 import com.example.rssfeeder.MyApp
 import com.example.rssfeeder.services.model.User
 
-class UserRepository {
-    companion object {
-        private var loginRepository: UserRepository? = null
-        @Synchronized
-        @JvmStatic
-        fun getInstance(): UserRepository {
-            if (loginRepository == null) loginRepository = UserRepository()
-            return loginRepository!!
-        }
-    }
+object UserRepository {
 
     fun login(email: String, password: String): LiveData<User> {
         val loginData = MutableLiveData<User>()

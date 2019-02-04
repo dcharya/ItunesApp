@@ -2,6 +2,7 @@ package com.example.rssfeeder.services
 
 import com.example.rssfeeder.services.model.SongList
 import io.reactivex.Observable
+import io.reactivex.Single
 import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
@@ -12,5 +13,5 @@ interface ITunesService {
     fun getTracks(
         @Query("key") name: String,
         @Query("limit") limit: Int = 10, @Query("page") page: Int = 1
-    ): Observable<Response<SongList>>
+    ): Single<Response<SongList>>
 }
