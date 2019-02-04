@@ -5,7 +5,7 @@ data class SongList(val songList: List<Song>,
                     val total: Int)
 data class Song(
     val album: Album,
-    val artists: List<Artist>,
+    val artists: ArrayList<Artist>,
     val id: Int,
     val name: String,
     val needPay: Boolean

@@ -6,11 +6,11 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.rssfeeder.R
+import com.example.rssfeeder.util.dismissKeyBoard
 import com.example.rssfeeder.util.showShortSnackBar
 import com.example.rssfeeder.viewmodels.LoginViewModel
 import com.example.rssfeeder.views.base.BaseFragment
 import kotlinx.android.synthetic.main.login_fragment.*
-import kotlinx.android.synthetic.main.login_fragment.view.*
 
 class LoginFragment : BaseFragment() {
 
@@ -29,6 +29,7 @@ class LoginFragment : BaseFragment() {
 
 
         btnLogin.setOnClickListener {
+            activity?.dismissKeyBoard()
             val userEmail = emailLogin.text.toString()
             val userPassword = passwordLogin.text.toString()
             if (viewModel.isValid(userEmail, userPassword)) {
@@ -66,5 +67,4 @@ class LoginFragment : BaseFragment() {
         super.onActivityCreated(savedInstanceState)
         viewModel = ViewModelProviders.of(this).get(LoginViewModel::class.java)
     }
-
 }

@@ -10,9 +10,10 @@ data class User(
     @PrimaryKey
     val email: String = "",
     val mobile: String = "",
-    val password: String = ""
+    val password: String = "",
+    var isLoggedIn: Boolean = false
 ) {
 
     @Ignore
-    constructor() : this("", "", "", "")
+    constructor() : this("", "", "", "", false)
 }

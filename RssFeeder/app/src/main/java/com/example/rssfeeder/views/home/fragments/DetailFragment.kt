@@ -13,10 +13,6 @@ class DetailFragment : BaseFragment() {
     private var currentStatus: Song? = null
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        /*close_details.setOnClickListener {
-            actionListener?.onAction(ACTION_SHOW_HOME, null)
-        }*/
-
         Picasso.with(activity).load(currentStatus?.album?.coverBig).into(close_details)
     }
 

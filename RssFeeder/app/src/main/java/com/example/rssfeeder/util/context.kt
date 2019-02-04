@@ -117,5 +117,5 @@ fun Context.isOnline(): Boolean {
     val cm = getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager?
     val info = cm!!.activeNetworkInfo ?: return false
     val network = info.detailedState
-    return network === NetworkInfo.State.CONNECTED || network === NetworkInfo.State.CONNECTING
+    return network === NetworkInfo.DetailedState.CONNECTED || network === NetworkInfo.DetailedState.CONNECTING
 }

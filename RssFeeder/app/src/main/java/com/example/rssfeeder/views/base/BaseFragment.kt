@@ -30,26 +30,14 @@ abstract class BaseFragment : Fragment() {
         viewUpdateOnResume()
     }
 
-    private val updateViewsRunnable = Runnable {
-        updateView()
-    }
-
-    fun notifyModelChanged() {
-        if (isResumed) {
-            activity?.runOnUiThread(updateViewsRunnable)
-        } else {
-            needToUpdateView = false
-        }
-    }
-
     open fun updateView() {
     }
 
     override fun onAttach(context: Context) {
         super.onAttach(context)
-        if(context is ActionListener){
+        if (context is ActionListener) {
             actionListener = context
-        } else{
+        } else {
             throw Exception("Activity is expected to implement ActionListener")
         }
 
@@ -60,10 +48,7 @@ abstract class BaseFragment : Fragment() {
         actionListener = null
     }
 
-
-
     fun wrapActionListener() = object : ActionListener {
-
         override fun onAction(action: String, data: Any?) {
             actionListener?.onAction(action, data)
         }

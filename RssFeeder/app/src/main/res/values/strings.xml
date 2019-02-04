@@ -1,26 +1,27 @@
 <resources>
-    <string name = "app_name">RSSFeeder</string>
-    <string name = "login_title">Login</string>
-    <string name = "hint_string_email">Email</string>
-    <string name = "hint_string_password">Password</string>
-    <string name = "btn_string_register">Register</string>
+    <string name="app_name">ITunes</string>
+    <string name="login_title">Login</string>
+    <string name="hint_string_email">Email</string>
+    <string name="hint_string_password">Password</string>
+    <string name="btn_string_register">Register</string>
 
-    <string name = "register_title">Registration</string>
-    <string name = "btn_string_cancel">Cancel</string>
-    <string name = "hint_string_name">Name</string>
-    <string name = "hint_string_phone">Mobile#</string>
+    <string name="register_title">Registration</string>
+    <string name="btn_string_cancel">Cancel</string>
+    <string name="hint_string_name">Name</string>
+    <string name="hint_string_phone">Mobile#</string>
 
-    <string name = "success_registration">Successfully Registered, Please login!!!</string>
+    <string name="success_registration">Successfully Registered, Please login!!!</string>
 
-    <string name = "err_login1">Please enter valid credentials</string>
-    <string name = "err_login2">User does not exists. Kindly Register!!!</string>
-    <string name = "err_registration_failed">Registration Failed</string>
+    <string name="err_login1">Please enter valid credentials</string>
+    <string name="err_login2">User does not exists. Kindly Register!!!</string>
+    <string name="err_registration_failed">Registration Failed</string>
+    <string name="err_network">Network Error!!!</string>
 
-    <string name = "search_hint">Search Songs</string>
-    <string name = "loading_text">Loading.../n Please wait!!!</string>
+    <string name="search_hint">Search Songs</string>
+    <string name="loading_text">Loading&#8230;/n Please wait!!!</string>
+    <string name="home_search_hint">Search your favourite albums/artists</string>
 
-
-    <string name = "appbar_scrolling_view_behavior" tranlateable = "false">
+    <string name="appbar_scrolling_view_behavior" tranlateable="false">
         android.support.design.widget.AppBarLayout$ScrollingViewBehaviour
     </string>
 </resources>

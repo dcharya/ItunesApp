@@ -1,4 +1,4 @@
-package com.example.rssfeeder.repository
+package com.example.rssfeeder.services
 
 import com.example.rssfeeder.services.model.SongList
 import io.reactivex.Observable

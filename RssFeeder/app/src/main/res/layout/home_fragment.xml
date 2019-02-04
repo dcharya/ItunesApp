@@ -13,19 +13,33 @@
             app:layout_constraintTop_toTopOf = "parent"
             app:layout_constraintBottom_toBottomOf = "parent"
             app:layout_constraintEnd_toEndOf = "parent"/>
-    <ProgressBar android:id = "@+id/pb_fetch_forecast"
-                 android:layout_gravity = "center"
-                 android:layout_width = "wrap_content"
-                 android:layout_height = "wrap_content"
-                 android:indeterminate = "true"
-                 android:indeterminateTint = "@color/colorPrimary"
-                 style = "@android:style/Widget.Holo.ProgressBar.Large"
-                 android:visibility = "gone"
-                 app:layout_constraintStart_toStartOf = "parent"
-                 app:layout_constraintTop_toTopOf = "parent"
-                 app:layout_constraintEnd_toEndOf = "parent"
-                 app:layout_constraintBottom_toBottomOf = "parent"
-    />
 
+    <TextView
+            android:id="@+id/search_hint_view"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:text = "@string/home_search_hint"
+            android:drawableLeft = "@android:drawable/ic_menu_search"
+            app:layout_constraintStart_toStartOf = "parent"
+            android:drawablePadding = "@dimen/padding_margin_4"
+            android:gravity = "center"
+            app:layout_constraintTop_toTopOf = "parent"
+            app:layout_constraintBottom_toBottomOf = "parent"
+            app:layout_constraintEnd_toEndOf = "parent"/>
+
+
+    <ProgressBar
+            android:id = "@+id/pb_songList"
+            android:layout_gravity = "center"
+            android:layout_width = "wrap_content"
+            android:layout_height = "wrap_content"
+            android:indeterminate = "true"
+            android:indeterminateTint = "@color/colorPrimary"
+            style = "@android:style/Widget.Holo.ProgressBar.Large"
+            android:visibility = "gone"
+            app:layout_constraintStart_toStartOf = "parent"
+            app:layout_constraintTop_toTopOf = "parent"
+            app:layout_constraintEnd_toEndOf = "parent"
+            app:layout_constraintBottom_toBottomOf = "parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,7 +1,7 @@
 package com.example.rssfeeder.viewmodels
 
 import androidx.lifecycle.Observer
-import com.example.rssfeeder.repository.ITunesService
+import com.example.rssfeeder.services.ITunesService
 import com.example.rssfeeder.services.model.SongList
 import com.example.rssfeeder.utils.JsonProvider
 import com.example.rssfeeder.utils.RxImmediateSchedulerRule
@@ -37,7 +37,6 @@ class HomeViewModelTest {
     fun setUp() {
         RxAndroidPlugins.setInitMainThreadSchedulerHandler { Schedulers.trampoline() }
         MockitoAnnotations.initMocks(this)
-        homeViewModel = Mockito.spy(HomeViewModel::class.java)
         iTunesService = Mockito.spy(ITunesService::class.java)
         gson = Mockito.spy(Gson::class.java)
 

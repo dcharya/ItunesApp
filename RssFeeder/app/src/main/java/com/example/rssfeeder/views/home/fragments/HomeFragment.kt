@@ -3,11 +3,7 @@ package com.example.rssfeeder.views.home.fragments
 import android.app.SearchManager
 import android.content.Context
 import android.os.Bundle
-import android.util.Log
-import android.view.Menu
-import android.view.MenuInflater
-import android.view.MenuItem
-import android.view.View
+import android.view.*
 import androidx.appcompat.widget.SearchView
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
@@ -17,8 +13,9 @@ import com.example.rssfeeder.services.model.SongList
 import com.example.rssfeeder.util.isOnline
 import com.example.rssfeeder.util.showShortSnackBar
 import com.example.rssfeeder.viewmodels.HomeViewModel
-import com.example.rssfeeder.views.SongsListAdaptar
+import com.example.rssfeeder.views.adapters.SongsListAdapter
 import com.example.rssfeeder.views.base.BaseFragment
+import com.example.rssfeeder.views.home.HomeActivity
 import kotlinx.android.synthetic.main.home_fragment.*
 
 
@@ -27,15 +24,12 @@ class HomeFragment : BaseFragment() {
     private lateinit var searchView: SearchView
     private lateinit var queryTextListener: SearchView.OnQueryTextListener
     override fun layoutResource() = R.layout.home_fragment
-    private lateinit var songsListAdaptar: SongsListAdaptar
-    private var currentStatus: SongList? = null
+    private lateinit var songsListAdapter: SongsListAdapter
 
     companion object {
-        val TAG = HomeFragment.javaClass.simpleName!!
-        val ACTION_SHOW_DETAILS = "$TAG.showdetails"
+        private val TAG = HomeFragment::class.java.simpleName!!
+        val ACTION_SHOW_DETAILS = "$TAG.showDetails"
         val ACTION_SHOW_ERROR = "$TAG.showError"
-
-
     }
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -46,18 +40,28 @@ class HomeFragment : BaseFragment() {
     private lateinit var viewModel: HomeViewModel
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-        songsListAdaptar = SongsListAdaptar(requireContext(), wrapActionListener())
         songListView.apply {
-            adapter = songsListAdaptar
+            adapter = songsListAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
         super.onActivityCreated(savedInstanceState)
-        viewModel = ViewModelProviders.of(this).get(HomeViewModel::class.java).apply {
+        viewModel = ViewModelProviders.of(activity as HomeActivity).get(HomeViewModel::class.java).apply {
             actionListener = this@HomeFragment.actionListener
+            context = requireContext()
         }
+        if (viewModel.songListData.value == null)
+            search_hint_view.visibility = View.VISIBLE
+        else
+            search_hint_view.visibility = View.GONE
+
+    }
+
+    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        songsListAdapter = SongsListAdapter(requireContext(), wrapActionListener())
+        return super.onCreateView(inflater, container, savedInstanceState)
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -71,23 +75,15 @@ class HomeFragment : BaseFragment() {
             searchView.setSearchableInfo(searchManager.getSearchableInfo(activity!!.componentName))
             queryTextListener = object : SearchView.OnQueryTextListener {
                 override fun onQueryTextChange(newText: String): Boolean {
-                    Log.i("onQueryTextChange", newText)
-
                     return false
                 }
 
                 override fun onQueryTextSubmit(query: String): Boolean {
-                    query?.let {
-                        if (!activity?.isOnline()!!) {
-                            viewModel.songListData.value = null
-                            songsListAdaptar.notifyDataSetChanged()
-                            pb_fetch_forecast.visibility = View.VISIBLE
-
-                            viewModel.getSongList(it)
-                            initObserver()
-                        } else {
-                            activity?.showShortSnackBar(home, "Network Error!!!")
-                        }
+                    if (activity?.isOnline()!!) {
+                        viewModel.getSongList(query)
+                        initObserver()
+                    } else {
+                        activity?.showShortSnackBar(home, R.string.err_network)
                     }
 
                     return false
@@ -96,25 +92,32 @@ class HomeFragment : BaseFragment() {
             searchView.setOnQueryTextListener(queryTextListener)
             super.onCreateOptionsMenu(menu, inflater)
         }
-
     }
 
     override fun updateView() {
-
-        songsListAdaptar.setData(currentStatus)
+        viewModel.songListData.value?.let {
+            if (it.songList?.isNotEmpty() as Boolean) {
+                songsListAdapter.setData(viewModel.songListData.value)
+            }
+        }
     }
 
     fun initObserver() {
         val songListObserver = Observer<SongList> { songList ->
-            songList?.let {
-                Log.i(TAG, "${songList.total}")
-                currentStatus = songList
-                pb_fetch_forecast.visibility = View.GONE
-                updateView()
+            pb_songList.visibility = View.GONE
 
+            if (songList != null) {
+                searchView.onActionViewCollapsed()
+                search_hint_view.visibility = View.GONE
+                updateView()
+            } else {
+                search_hint_view.visibility = View.VISIBLE
             }
         }
         viewModel.songListData.observe(this, songListObserver)
+        pb_songList.visibility = View.VISIBLE
+
+        search_hint_view.visibility = View.GONE
     }
 
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {

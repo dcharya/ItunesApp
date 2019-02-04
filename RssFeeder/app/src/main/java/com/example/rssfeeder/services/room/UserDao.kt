@@ -13,10 +13,14 @@ interface UserDao {
     fun getUser(email: String, password: String): User
 
     @Query("SELECT * FROM user where email=:email")
-    fun findUser(email:String): User
+    fun findUser(email: String): User
 
     @Query("SELECT * FROM user")
     fun getAllUser(): List<User>
+
+    @Query("SELECT * FROM user WHERE email=:email AND isLoggedIn=:loginStatus")
+    fun isUserLoggedIn(email: String, loginStatus: Boolean): User
+
 
     @Delete()
     fun deleteUser(user: User)

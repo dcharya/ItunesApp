@@ -7,10 +7,12 @@ import androidx.test.platform.app.InstrumentationRegistry
 import com.example.rssfeeder.services.model.User
 import com.example.rssfeeder.services.room.UserDao
 import com.example.rssfeeder.services.room.UserDatabase
-import org.junit.*
+import org.junit.After
+import org.junit.Assert
+import org.junit.Before
+import org.junit.Test
 import org.junit.runner.RunWith
 import java.io.IOException
-import java.lang.Exception
 
 @RunWith(AndroidJUnit4ClassRunner::class)
 class UserDaoTest {

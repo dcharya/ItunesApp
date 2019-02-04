@@ -8,7 +8,6 @@ import com.example.rssfeeder.services.model.User
 class UserRepository {
     companion object {
         private var loginRepository: UserRepository? = null
-        //        private var context: Context?=null
         @Synchronized
         @JvmStatic
         fun getInstance(): UserRepository {
@@ -19,14 +18,14 @@ class UserRepository {
 
     fun login(email: String, password: String): LiveData<User> {
         val loginData = MutableLiveData<User>()
-        val user = MyApp?.database?.userDao()?.getUser(email, password)
+        val user = MyApp.database?.userDao()?.getUser(email, password)
         loginData.value = user
         return loginData
     }
 
     fun register(user: User): LiveData<User> {
         val registerData = MutableLiveData<User>()
-        MyApp?.database?.userDao()?.insertUser(user)
+        MyApp.database?.userDao()?.insertUser(user)
         registerData.value = user
         return registerData
     }

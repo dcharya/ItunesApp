@@ -1,7 +1,7 @@
 package com.example.rssfeeder.viewmodels
 
-import com.example.rssfeeder.utils.LiveDataTestUtil
 import com.example.rssfeeder.services.model.User
+import com.example.rssfeeder.utils.LiveDataTestUtil
 import org.junit.Assert
 import org.junit.Before
 import org.junit.Test
