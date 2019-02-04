@@ -11,7 +11,7 @@ class DataSource(val compositeDisposable: CompositeDisposable) : PageKeyedDataSo
         val disposable = StackOverFlowRepository
             .initService().getAnswers(params.requestedLoadSize, PAGE_SIZE, SITE_NAME)
             .subscribe({ response ->
-                var nextKey = if (params.requestedLoadSize>1) params.requestedLoadSize - 1
+                var nextKey = if (params.requestedLoadSize > 1) params.requestedLoadSize - 1
                 else 0
                 callback.onResult(
 
@@ -21,10 +21,20 @@ class DataSource(val compositeDisposable: CompositeDisposable) : PageKeyedDataSo
                     nextKey
                 )
             }, { t2: Throwable? -> })
+        compositeDisposable.add(disposable)
     }
 
     override fun loadAfter(params: LoadParams<Int>, callback: LoadCallback<Int, Item>) {
-        callback.onResult()
+        val disposable = StackOverFlowRepository
+            .initService().getAnswers(params.requestedLoadSize, PAGE_SIZE, SITE_NAME)
+            .subscribe({ response ->
+                var nextKey: Int ?= null
+                if (response.body()?.has_more!!)
+                    nextKey = params.requestedLoadSize + 1
+
+                callback.onResult(response.body()!!.items, nextKey)
+            }, { t2: Throwable? -> })
+        compositeDisposable.add(disposable)
     }
 
     override fun loadBefore(params: LoadParams<Int>, callback: LoadCallback<Int, Item>) {
@@ -32,7 +42,6 @@ class DataSource(val compositeDisposable: CompositeDisposable) : PageKeyedDataSo
     }
 
     companion object {
-        const val FIRST_PAGE = 1
         const val PAGE_SIZE = 20
         const val SITE_NAME = "stackoverflow"
     }
