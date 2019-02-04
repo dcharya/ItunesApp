@@ -10,7 +10,9 @@ import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.rssfeeder.R
 import com.example.rssfeeder.services.model.SongList
+import com.example.rssfeeder.util.AppPreferences
 import com.example.rssfeeder.util.isOnline
+import com.example.rssfeeder.util.restartApp
 import com.example.rssfeeder.util.showShortSnackBar
 import com.example.rssfeeder.viewmodels.HomeViewModel
 import com.example.rssfeeder.views.adapters.SongsListAdapter
@@ -21,9 +23,10 @@ import kotlinx.android.synthetic.main.home_fragment.*
 
 class HomeFragment : BaseFragment() {
 
+    override fun layoutResource() = R.layout.home_fragment
+
     private lateinit var searchView: SearchView
     private lateinit var queryTextListener: SearchView.OnQueryTextListener
-    override fun layoutResource() = R.layout.home_fragment
     private lateinit var songsListAdapter: SongsListAdapter
 
     companion object {
@@ -44,6 +47,8 @@ class HomeFragment : BaseFragment() {
             adapter = songsListAdapter
             layoutManager = LinearLayoutManager(requireContext())
         }
+
+        activity?.showShortSnackBar(home, getString(R.string.welcome, AppPreferences.email))
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -62,6 +67,32 @@ class HomeFragment : BaseFragment() {
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View {
         songsListAdapter = SongsListAdapter(requireContext(), wrapActionListener())
         return super.onCreateView(inflater, container, savedInstanceState)
+    }
+
+    override fun updateView() {
+        /*viewModel.songListData.value?.let {
+            if (it.songList?.isNotEmpty() as Boolean) {*/
+        songsListAdapter.setData(viewModel.songListData.value)
+    }
+
+    fun initObserver() {
+        val songListObserver = Observer<SongList> { songList ->
+            pb_songList.visibility = View.GONE
+
+            when {
+                songList != null -> {
+                    searchView.onActionViewCollapsed()
+                    search_hint_view.visibility = View.GONE
+                }
+                else ->
+                    search_hint_view.visibility = View.VISIBLE
+            }
+            updateView()
+        }
+        viewModel.songListData.observe(this, songListObserver)
+        pb_songList.visibility = View.VISIBLE
+
+        search_hint_view.visibility = View.GONE
     }
 
     override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
@@ -85,7 +116,6 @@ class HomeFragment : BaseFragment() {
                     } else {
                         activity?.showShortSnackBar(home, R.string.err_network)
                     }
-
                     return false
                 }
             }
@@ -94,34 +124,13 @@ class HomeFragment : BaseFragment() {
         }
     }
 
-    override fun updateView() {
-        viewModel.songListData.value?.let {
-            if (it.songList?.isNotEmpty() as Boolean) {
-                songsListAdapter.setData(viewModel.songListData.value)
-            }
-        }
-    }
-
-    fun initObserver() {
-        val songListObserver = Observer<SongList> { songList ->
-            pb_songList.visibility = View.GONE
-
-            if (songList != null) {
-                searchView.onActionViewCollapsed()
-                search_hint_view.visibility = View.GONE
-                updateView()
-            } else {
-                search_hint_view.visibility = View.VISIBLE
-            }
-        }
-        viewModel.songListData.observe(this, songListObserver)
-        pb_songList.visibility = View.VISIBLE
-
-        search_hint_view.visibility = View.GONE
-    }
-
     override fun onOptionsItemSelected(item: MenuItem) = when (item.itemId) {
         R.id.action_search -> false
+        R.id.action_logout -> {
+            AppPreferences.isUserLoggedIn = false
+            activity?.restartApp()
+            false
+        }
         else -> super.onOptionsItemSelected(item)
     }
 }

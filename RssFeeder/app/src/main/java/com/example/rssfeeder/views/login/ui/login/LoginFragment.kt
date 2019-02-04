@@ -6,6 +6,7 @@ import android.view.View
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import com.example.rssfeeder.R
+import com.example.rssfeeder.util.AppPreferences
 import com.example.rssfeeder.util.dismissKeyBoard
 import com.example.rssfeeder.util.showShortSnackBar
 import com.example.rssfeeder.viewmodels.LoginViewModel
@@ -50,11 +51,13 @@ class LoginFragment : BaseFragment() {
 
     @SuppressLint("NewApi")
     private fun observerLogin(email: String, password: String) {
-        viewModel.loginUser(email,password).observe(this, Observer {loginUser->
-            if (loginUser!=null){
+        viewModel.loginUser(email, password).observe(this, Observer { loginUser ->
+            if (loginUser != null) {
+                AppPreferences.isUserLoggedIn = true
+                AppPreferences.email = email
                 actionListener?.onAction(ACTION_SHOW_HOME, null)
-            } else{
-                activity?.showShortSnackBar(login_linear_layout,R.string.err_login2)
+            } else {
+                activity?.showShortSnackBar(login_linear_layout, R.string.err_login2)
                 emailLogin.setText("")
                 passwordLogin.setText("")
                 emailLogin.requestFocus()

@@ -42,6 +42,7 @@ class HomeActivity : BaseActivity() {
             HomeFragment.ACTION_SHOW_ERROR ->
                 data?.let { if (it is String) this.showShortSnackBar(fragmentContainer, it) }
         }
+
     }
 
     override fun handleBackPressed() {
