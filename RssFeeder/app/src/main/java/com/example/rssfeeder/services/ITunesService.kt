@@ -6,6 +6,9 @@ import retrofit2.Response
 import retrofit2.http.GET
 import retrofit2.http.Query
 
+/**
+ * ITunesService is an interface created to provide getTracks method 
+ */
 interface ITunesService {
 
     @GET("api/search/song/netease")

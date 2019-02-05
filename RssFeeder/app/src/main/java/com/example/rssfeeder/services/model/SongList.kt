@@ -1,8 +1,15 @@
 package com.example.rssfeeder.services.model
 
-data class SongList(val songList: List<Song>,
-                    val success: Boolean,
-                    val total: Int)
+/**
+ * data class to hold songs list data
+ * @author Deeapk Kumar
+ */
+data class SongList(
+    val songList: List<Song>,
+    val success: Boolean,
+    val total: Int
+)
+
 data class Song(
     val album: Album,
     val artists: ArrayList<Artist>,

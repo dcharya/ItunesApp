@@ -8,7 +8,7 @@ import com.example.rssfeeder.util.isValidEmail
 
 class LoginViewModel : ViewModel() {
     fun loginUser(email: String, password: String): LiveData<User> {
-        return UserRepository.getInstance().login(email, password)
+        return UserRepository.login(email, password)
     }
 
     fun isValid(email: String, password: String): Boolean {

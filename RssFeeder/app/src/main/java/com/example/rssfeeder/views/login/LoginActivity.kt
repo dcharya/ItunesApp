@@ -1,6 +1,5 @@
 package com.example.rssfeeder.views.login
 
-import android.app.Activity
 import android.os.Bundle
 import com.example.rssfeeder.R
 import com.example.rssfeeder.util.showShortSnackBar
@@ -30,10 +29,6 @@ class LoginActivity : BaseActivity() {
         title = resources.getString(R.string.register_title)
         registerFragment = RegisterFragment()
         showFragment(registerFragment)
-    }
-
-    fun launchHomeActivity(activity: Activity) {
-        activity.startActivity(HomeActivity::class.java, finish = true)
     }
 
     override fun onPerformAction(action: String, data: Any?) {

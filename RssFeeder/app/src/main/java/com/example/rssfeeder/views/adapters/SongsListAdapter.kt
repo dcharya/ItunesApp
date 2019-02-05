@@ -13,6 +13,11 @@ import com.example.rssfeeder.views.home.fragments.HomeFragment
 import com.squareup.picasso.Picasso
 import kotlinx.android.synthetic.main.songslist.view.*
 
+/**
+ * An recycler view adapter class to bind songs list data with the recycler
+ * view.
+ * @author: Deepak Kumar
+ */
 class SongsListAdapter(val context: Context, private val actionListener: ActionListener) :
     RecyclerView.Adapter<HomeViewHolder>() {
 
@@ -43,6 +48,12 @@ class SongsListAdapter(val context: Context, private val actionListener: ActionL
     }
 }
 
+/**
+ * A view holder class to create the view for the list row.
+ *
+ * @author: Deepak Kumar
+ */
+
 class HomeViewHolder(val context: Context, view: View, actionListener: ActionListener) : RecyclerView.ViewHolder(view) {
 
     private var song: Song? = null
@@ -53,6 +64,10 @@ class HomeViewHolder(val context: Context, view: View, actionListener: ActionLis
         }
     }
 
+    /**
+     * Method to set data on view items of list row
+     * @param _song holding song data
+     */
     fun setData(_song: Song?) {
         song = _song
         _song?.let {

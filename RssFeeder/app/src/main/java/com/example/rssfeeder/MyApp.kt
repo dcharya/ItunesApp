@@ -5,8 +5,10 @@ import androidx.room.Room.databaseBuilder
 import com.example.rssfeeder.services.room.UserDatabase
 import com.example.rssfeeder.util.AppPreferences
 
+/**
+ * Android Application class. Used for accessing singletons.
+ */
 class MyApp : Application() {
-
 
     override fun onCreate() {
         super.onCreate()

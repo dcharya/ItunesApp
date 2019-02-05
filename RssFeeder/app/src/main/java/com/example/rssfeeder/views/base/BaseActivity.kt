@@ -6,6 +6,10 @@ import androidx.fragment.app.Fragment
 import com.example.rssfeeder.R
 import com.example.rssfeeder.util.ActionListener
 
+/**
+ * @BaseActivity all other activities extends this class contains base functionality of an activity
+ * @author Deepak Kumar
+ */
 open class BaseActivity : AppCompatActivity(), ActionListener {
 
     override fun onCreate(savedInstanceState: Bundle?) {

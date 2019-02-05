@@ -34,12 +34,21 @@ class RegisterViewModelTest {
         }
     }
 
+    @Test
+    fun testIsValid(){
+        Assert.assertTrue(registerViewModel.isValid(email, password, mobile, name))
+        Assert.assertFalse(registerViewModel.isValid(email, password,"",name))
+        Assert.assertFalse(registerViewModel.isValid(invalidEmail, password, mobile, name))
+    }
+
 
     companion object {
         const val name = "Deepak"
         const val email = "deepak.charya@gmail.com"
         const val mobile = "9988851509"
         const val password = "Diya@1234"
+
+        const val invalidEmail = "deepak@kumar@gmail.com"
 
         val user = User(name, email, mobile, password)
     }

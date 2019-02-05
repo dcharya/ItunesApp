@@ -8,6 +8,10 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import com.example.rssfeeder.util.ActionListener
 
+/**
+ * @BaseFragment all other fragments extends this class contains base functionality of an fragment
+ * @author Deeapak Kumar
+ */
 abstract class BaseFragment : Fragment() {
 
     private var needToUpdateView = false

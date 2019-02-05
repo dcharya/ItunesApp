@@ -7,10 +7,13 @@ import com.example.rssfeeder.services.model.User
 import com.example.rssfeeder.util.isValidEmail
 import com.example.rssfeeder.util.isValidPhone
 
+/**
+ * View model class for registration module
+ */
 class RegisterViewModel : ViewModel() {
 
     fun registerUser(user: User): LiveData<User> {
-        return UserRepository.getInstance().register(user)
+        return UserRepository.register(user)
     }
 
     fun isValid(email: String, password: String, phone: String, name: String): Boolean {

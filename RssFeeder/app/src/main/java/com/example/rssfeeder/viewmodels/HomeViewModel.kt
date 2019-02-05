@@ -1,6 +1,5 @@
 package com.example.rssfeeder.viewmodels
 
-import android.app.Activity
 import android.content.Context
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
@@ -8,7 +7,6 @@ import com.example.rssfeeder.R
 import com.example.rssfeeder.repository.ITunesRepository
 import com.example.rssfeeder.services.model.SongList
 import com.example.rssfeeder.util.ActionListener
-import com.example.rssfeeder.views.home.HomeActivity
 import com.example.rssfeeder.views.home.fragments.HomeFragment
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.CompositeDisposable
@@ -16,7 +14,7 @@ import io.reactivex.observers.DisposableObserver
 import io.reactivex.schedulers.Schedulers
 import retrofit2.Response
 
-class HomeViewModel() : ViewModel() {
+class HomeViewModel : ViewModel() {
 
     var actionListener: ActionListener? = null
     lateinit var context: Context

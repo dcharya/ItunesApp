@@ -3,6 +3,10 @@ package com.example.rssfeeder.util
 import android.content.Context
 import android.content.SharedPreferences
 
+/**
+ * @AppPreferences This is an object to manage SharedPreference in Application
+ * @author Deepak Kumar
+ */
 object AppPreferences {
     private const val NAME = "ITUNE"
     private const val MODE = Context.MODE_PRIVATE
@@ -25,6 +29,9 @@ object AppPreferences {
         editor.commit()
     }
 
+    /**
+     * To store and retrieve login status of user
+     */
     var isUserLoggedIn: Boolean
         // custom getter to get a preference of a desired type, with a predefined default value
         get() = preferences.getBoolean(IS_USER_LOGGED_IN.first, IS_USER_LOGGED_IN.second)
@@ -33,6 +40,9 @@ object AppPreferences {
             it.putBoolean(IS_USER_LOGGED_IN.first, value)
         }
 
+    /**
+     * To store and retrieve email address of logged in user
+     */
     var email: String
         get() = preferences.getString(USER_EMAIL.first, USER_EMAIL.second)
         set(value) {
