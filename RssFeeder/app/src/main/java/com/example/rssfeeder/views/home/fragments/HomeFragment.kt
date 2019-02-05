@@ -30,7 +30,7 @@ class HomeFragment : BaseFragment() {
     private lateinit var songsListAdapter: SongsListAdapter
 
     companion object {
-        private val TAG = HomeFragment::class.java.simpleName!!
+        private val TAG = HomeFragment::class.java.simpleName
         val ACTION_SHOW_DETAILS = "$TAG.showDetails"
         val ACTION_SHOW_ERROR = "$TAG.showError"
     }
@@ -48,7 +48,6 @@ class HomeFragment : BaseFragment() {
             layoutManager = LinearLayoutManager(requireContext())
         }
 
-        activity?.showShortSnackBar(home, getString(R.string.welcome, AppPreferences.email))
     }
 
     override fun onActivityCreated(savedInstanceState: Bundle?) {
@@ -57,6 +56,7 @@ class HomeFragment : BaseFragment() {
             actionListener = this@HomeFragment.actionListener
             context = requireContext()
         }
+
         if (viewModel.songListData.value == null)
             search_hint_view.visibility = View.VISIBLE
         else

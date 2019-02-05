@@ -1,7 +1,9 @@
 package com.example.rssfeeder.views.home
 
 import android.os.Bundle
+import com.example.rssfeeder.R
 import com.example.rssfeeder.services.model.Song
+import com.example.rssfeeder.util.AppPreferences
 import com.example.rssfeeder.util.showShortSnackBar
 import com.example.rssfeeder.views.base.BaseActivity
 import com.example.rssfeeder.views.home.fragments.DetailFragment
@@ -14,6 +16,7 @@ class HomeActivity : BaseActivity() {
     private val detailFragment by lazy { DetailFragment() }
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
+        this.showShortSnackBar(fragmentContainer, getString(R.string.welcome, AppPreferences.email))
         if (savedInstanceState == null) {
             showHomeFragment()
         }
