@@ -9,3 +9,7 @@ b). This application also includes test cases to test the Room Database.
 Future updates will be:-
 
 Include Paging and Navigation android architecture components, Dependenct Injection using - Daggar2, ButterKnife.
+
+<p align="center">
+  <img width="460" height="300" src="screentshots/logo.png">
+</p>
