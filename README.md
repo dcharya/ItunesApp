@@ -10,4 +10,4 @@ Future updates will be:-
 
 Include Paging and Navigation android architecture components, Dependenct Injection using - Daggar2, ButterKnife.
 
-![phone1|small](screenshots/logo.png)
+![phone1|small](screenshots/logo.jpeg)
